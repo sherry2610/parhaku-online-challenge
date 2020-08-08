@@ -1,0 +1,7 @@
+.imgContainer{
+    border: 5px solid black;
+}
+
+.imgContainer:hover{
+    opacity: 0.3;
+}
