@@ -1,20 +1,23 @@
 import React,{useState} from "react";
+import PropTypes from 'prop-types';
 
 
 import {  Col, Image } from "react-bootstrap";
 import { HeartOutlined, HeartFilled, PlusCircleOutlined } from "@ant-design/icons";
 
-function ImageComp({url,isFav,id,toggleFav}) {
+function ImageComp({image,toggleFav}) {
 const [hovered,setHovered] = useState(false)
 
 
 
+
+
 function heartIcon() {
-  if(isFav) {
+  if(image.isFavorite) {
       console.log("toggled!")
-      return <HeartFilled onClick={() =>toggleFav(id)} />
+      return <HeartFilled onClick={() =>toggleFav(image.id)} />
   } else if(hovered) {
-      return <HeartOutlined onClick={() =>toggleFav(id)} />
+      return <HeartOutlined onClick={() =>toggleFav(image.id)} />
   }
 }
 const cartOption = hovered && <PlusCircleOutlined />
@@ -28,13 +31,13 @@ const hoveredIn = () => {
     setHovered(false);
     console.log("hovered out!");
   };
-    return url ? (
+    return image.url ? (
  
     //    <h1>IMAGE</h1>
       <Col xs={6} md={2} >
           <div>
         <div onMouseEnter={()=>hoveredIn()} onMouseLeave={()=>hoveredOut()} >
-        <Image src={url} thumbnail />
+        <Image src={image.url} thumbnail />
         {heartIcon()}
         {cartOption}
         </div>
@@ -49,6 +52,15 @@ const hoveredIn = () => {
 
   
 
+ImageComp.propTypes = {
+    image : PropTypes.shape({
+        url: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+        isFavorite: PropTypes.bool.isRequired
+    }),
+    toggleFav : PropTypes.func.isRequired
+
+}
 
 
 

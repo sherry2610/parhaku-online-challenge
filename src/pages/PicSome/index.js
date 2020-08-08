@@ -40,9 +40,10 @@ const toggleFunction = (id) => {
       {imgData.map((image, i) => (
         // <div className="imgContainer">
           <ImageComp
-            url={image.url}
-            isFav={image.isFavorite}
-            id={image.id}
+            // url={image.url}
+            // isFav={image.isFavorite}
+            // id={image.id}
+            image={image}
             key={i}
             toggleFav={toggleFunction}
           />
