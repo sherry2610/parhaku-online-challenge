@@ -12,7 +12,27 @@ function PicSome() {
   const { imgData, setImgData } = useContext(UserContext);
   // console.log("++++++", imgData);
 
+const toggleFunction = (id) => {
+  const updatedData = imgData.map(img=>{
+    return img.id===id?(
+       {
+      ...img,
+      isFavorite : !img.isFavorite
+      }
+    ) : (
+      img
+    )
 
+    // if(img.id===id){
+    //   console.log("before",img)
+    //   return !img.isFavorite;
+    //   console.log("After",img)
+    //   return img
+    // }
+  })
+  setImgData(updatedData)
+  console.log("toggledImage",updatedData)
+}
  
 
   return (
@@ -24,6 +44,7 @@ function PicSome() {
             isFav={image.isFavorite}
             id={image.id}
             key={i}
+            toggleFav={toggleFunction}
           />
         // </div>
       ))}
