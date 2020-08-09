@@ -31,9 +31,9 @@ function Navigation() {
 
   const cartIcon =
     cartItems.length === 0 ? (
-      <ShoppingCartOutlinedIcon />
+      <ShoppingCartOutlinedIcon className="icon" />
     ) : (
-      <ShoppingCartIcon />
+      <ShoppingCartIcon className="icon" />
     );
 
   return (

@@ -11,18 +11,18 @@ function ImageComp({ image, toggleCart, toggleFav }) {
   function heartIcon() {
     if (image.isFavorite) {
       console.log("toggled!");
-      return <FavoriteIcon onClick={() => toggleFav(image.id)} />;
+      return <FavoriteIcon className='icon' onClick={() => toggleFav(image.id)} />;
     } else if (hovered) {
-      return <FavoriteBorderIcon onClick={() => toggleFav(image.id)} />;
+      return <FavoriteBorderIcon className='icon' onClick={() => toggleFav(image.id)} />;
     }
   }
 
   function cartIcon() {
     if (image.inCart) {
       console.log("toggled!");
-      return <AddCircleIcon onClick={() => toggleCart(image.id)} />;
+      return <AddCircleIcon className='icon' onClick={() => toggleCart(image.id)} />;
     } else if (hovered) {
-      return <AddCircleOutlineIcon onClick={() => toggleCart(image.id)} />;
+      return <AddCircleOutlineIcon className='icon' onClick={() => toggleCart(image.id)} />;
     }
   }
   const hoveredIn = () => {
@@ -35,12 +35,14 @@ function ImageComp({ image, toggleCart, toggleFav }) {
     console.log("hovered out!");
   };
   return image.url ? (
-    <Col xs={6} md={2}>
+    <Col xs={3} md={3}>
       <div>
         <div onMouseEnter={() => hoveredIn()} onMouseLeave={() => hoveredOut()}>
           <Image src={image.url} thumbnail />
+          <div style={{height:"50px"}}>
           {heartIcon()}
           {cartIcon()}
+          </div>
         </div>
       </div>
     </Col>

@@ -6,3 +6,8 @@
   padding:10px;
   font-size: 28px;
 }
+
+.icon{
+  transform: scale(1.8);
+
+}
