@@ -23,3 +23,22 @@
     margin: 35px;
     float:right;
 }
+.item-cash{
+    position: relative;
+    left: 600px;
+    top:10px;
+}
+.total-div{
+    border: 3px solid black;
+    height: 100px;
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    text-align: right;
+    padding:25px
+}
+.total-div span{
+    font-size: 24px;
+    font-weight: bolder;
+
+}

@@ -37,6 +37,10 @@ function Cart() {
               />
             )
         )}
+        <div className='total-div'>
+          <span >TOTAL :</span>
+            <span>{(cartItems.length*5.99).toLocaleString("en-US", {style: "currency", currency: "USD"})}</span>
+        </div>
       </div>
     );
   } else {
