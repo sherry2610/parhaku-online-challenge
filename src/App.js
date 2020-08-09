@@ -41,8 +41,9 @@ function App() {
 
   return (
     <div>
-      <Navigation />
       <PicSomeContext.Provider value={providerValue}>
+      <Navigation  />
+      
         <Switch>
           <Route path="/" exact component={PicSome} />
           <Route path="/cart" component={Cart} />
