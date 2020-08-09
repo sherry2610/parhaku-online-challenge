@@ -50,8 +50,9 @@ const hoveredIn = () => {
     //    <h1>IMAGE</h1>
       <Col xs={6} md={2} >
           <div>
-        <div onMouseEnter={()=>hoveredIn()} onMouseLeave={()=>hoveredOut()} >
+        <div onMouseEnter={()=>hoveredIn()} onMouseLeave={()=>hoveredOut()}  >
         <Image src={image.url} thumbnail />
+        {/* <img src={image.url} style={{height:"100%",width:"100%",margin:"20px"}}/> */}
         {heartIcon()}
         {cartIcon()}
         </div>

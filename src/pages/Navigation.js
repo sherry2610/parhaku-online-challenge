@@ -1,14 +1,32 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {Link} from 'react-router-dom'
-import {Nav} from "react-bootstrap";
+import {Nav, Button, Spinner} from "react-bootstrap";
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import { PicSomeContext } from "../context/PicSomeContext";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import '../App.css'
 function Navigation() {
-  const { cartItems } = useContext(PicSomeContext);
+  const { imgData,setImgData,setCartItems,cartItems } = useContext(PicSomeContext);
+  const [loading,setLoading] = useState(false)
   const cartIcon = cartItems.length === 0 ? <ShoppingCartOutlinedIcon /> : <ShoppingCartIcon />
-
+  const orderPlaced = () =>{
+    setLoading(true)
+    setTimeout(()=>{
+      setLoading(false)
+      setCartItems([])
+      const newData = imgData.map(img=>{
+        return {
+          ...img,
+          inCart:false
+        }
+      })
+      setImgData(newData)
+      console.log("Order Placed!")
+    }
+    ,3000
+    )
+    
+  }
   return (
     <div className="nav-header">
       <Nav >
@@ -16,14 +34,14 @@ function Navigation() {
           <Link to='/' style={{position:"relative",left:"50px"}} >Pic Some</Link>
         
         
-        <Link to='/cart' style={{position:"relative",left:"80%",size: "70px"}}>{cartIcon}</Link>
-      
-        
-        {/* <Nav.Item>
-          <Nav.Link eventKey="disabled" disabled>
-            Disabled
-          </Nav.Link>
-        </Nav.Item> */}
+        <Link to='/cart' style={{position:"relative",left:"80%"}}>{cartIcon}</Link>
+
+        {cartItems.length>0 && (
+                <Button style={{position:"relative",left:"60%"}} onClick={()=>{orderPlaced()}}>{loading?"Ordering....":"Place Order!"}</Button>
+              )      
+        }
+        {loading&&<Spinner style={{position:"relative",left:"30%"}} animation="border" variant="primary" />}
+
       </Nav>
     </div>
   );

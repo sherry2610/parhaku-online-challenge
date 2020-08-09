@@ -30,12 +30,12 @@
 }
 .total-div{
     border: 3px solid black;
-    height: 100px;
+    height: 120px;
     width: 70%;
     margin: 0 auto;
     margin-bottom: 10px;
     text-align: right;
-    padding:25px
+    padding:35px
 }
 .total-div span{
     font-size: 24px;
