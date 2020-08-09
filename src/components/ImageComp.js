@@ -4,8 +4,11 @@ import PropTypes from 'prop-types';
 
 import {  Col, Image } from "react-bootstrap";
 import { HeartOutlined, HeartFilled, PlusCircleOutlined } from "@ant-design/icons";
-
-function ImageComp({image,toggleFav}) {
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+function ImageComp({image,toggleCart,toggleFav}) {
 const [hovered,setHovered] = useState(false)
 
 
@@ -15,12 +18,23 @@ const [hovered,setHovered] = useState(false)
 function heartIcon() {
   if(image.isFavorite) {
       console.log("toggled!")
-      return <HeartFilled onClick={() =>toggleFav(image.id)} />
+      return <FavoriteIcon onClick={() =>toggleFav(image.id)} />
   } else if(hovered) {
-      return <HeartOutlined onClick={() =>toggleFav(image.id)} />
+      return <FavoriteBorderIcon onClick={() =>toggleFav(image.id)} />
   }
 }
-const cartOption = hovered && <PlusCircleOutlined />
+
+function cartIcon() {
+    if(image.inCart) {
+        console.log("toggled!")
+        return <AddCircleIcon onClick={() =>toggleCart(image.id)} />
+    }
+    else if(hovered){
+        return <AddCircleOutlineIcon onClick={() =>toggleCart(image.id)} />
+    }
+  }
+
+const cartOption = hovered && <AddCircleOutlineIcon />
 
 const hoveredIn = () => {
     setHovered(true);
@@ -39,7 +53,7 @@ const hoveredIn = () => {
         <div onMouseEnter={()=>hoveredIn()} onMouseLeave={()=>hoveredOut()} >
         <Image src={image.url} thumbnail />
         {heartIcon()}
-        {cartOption}
+        {cartIcon()}
         </div>
    
         

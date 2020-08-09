@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { UserContext } from "../../context/UserContext";
+import { PicSomeContext } from "../../context/PicSomeContext";
 import ImageComp from "../../components/ImageComp";
 import { Row, Col } from "react-bootstrap";
 
@@ -9,7 +9,7 @@ import "./index.css";
 function PicSome() {
   const [hovered, setHovered] = useState(false);
 
-  const { imgData, setImgData } = useContext(UserContext);
+  const { imgData, setImgData, setCartItems } = useContext(PicSomeContext);
   // console.log("++++++", imgData);
 
 const toggleFunction = (id) => {
@@ -22,19 +22,26 @@ const toggleFunction = (id) => {
     ) : (
       img
     )
-
-    // if(img.id===id){
-    //   console.log("before",img)
-    //   return !img.isFavorite;
-    //   console.log("After",img)
-    //   return img
-    // }
   })
   setImgData(updatedData)
   console.log("toggledImage",updatedData)
 }
  
-
+const toggleCart = (id) => {
+  const updatedData = imgData.map(img=>{
+    return img.id===id?(
+       {
+      ...img,
+      inCart : !img.inCart
+      }
+    ) : (
+      img
+    )
+  })
+  setImgData(updatedData)
+  setCartItems(updatedData.filter(d=>d.inCart))
+  console.log("toggledImage",updatedData)
+}
   return (
     <Row>
       {imgData.map((image, i) => (
@@ -46,6 +53,7 @@ const toggleFunction = (id) => {
             image={image}
             key={i}
             toggleFav={toggleFunction}
+            toggleCart={toggleCart}
           />
         // </div>
       ))}

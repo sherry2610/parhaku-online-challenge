@@ -1,0 +1,20 @@
+.cart-item-div{
+    border: 2px solid springgreen;
+    height: 100px;
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 10px;    
+}
+.serial-num{
+    margin-left: 10px;
+    background-color: springgreen;
+    padding:10px;
+    border-radius: 100px;
+}
+.cart-item-img{
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
